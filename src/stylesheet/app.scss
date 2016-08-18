@@ -1,0 +1,125 @@
+html,
+body {
+  height: 100%;
+  font-size: $base-font-size;
+}
+
+// Default body styles
+body {
+  background: $body-background;
+  color: $body-font-color;
+  padding: 0;
+  margin: 0;
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
+  font-style: $body-font-style;
+  line-height: 1.6;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Others
+label {
+  -webkit-appearance: none;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a {
+  color: $global-primary;
+  text-decoration: none;
+}
+
+
+.app{
+  font-size: 14px;
+}
+
+#root, .container, .view ,body, html {
+
+}
+.view {
+  padding-bottom:rem-calc($tabbar-height-px);
+}
+
+
+@mixin tabbar-style($background: $tabbar-background) {
+  background: $background;
+}
+
+@mixin tabbar-link-color(
+  $color: $tabbar-color,
+  $active-color: $global-primary
+) {
+  &,
+  & a {
+    color: $color;
+  }
+
+  > .#{map_get($am-states, active)} {
+    &, & a {
+      color: $active-color;
+    }
+  }
+}
+
+
+// Output
+// -----------------------------------------------------------------------------
+
+.#{$tabbar-prefix} {
+  display: flex;
+  width: 100%;
+  height: $tabbar-height;
+  position: fixed;
+  bottom: 0;
+  z-index: $tabbar-zindex;
+
+  @include tabbar-style();
+  @include tabbar-link-color();
+}
+
+.#{$tabbar-prefix}-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &.#{map_get($am-states, active)} {
+    cursor: default;
+    pointer-events: none;
+    background: $tabbar-active-background;
+    color: $tabbar-active-background;
+  }
+}
+
+.#{$tabbar-prefix}-label {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+// Modifiers
+// -----------------------------------------------------------------------------
+$tabbar-styles: map_merge($am-colors, (dark: $dark-alt)) !default;
+
+@each $color-key, $color in $tabbar-styles {
+  .#{$tabbar-prefix}-#{$color-key} {
+    @include tabbar-style($color);
+  }
+}
+
+// common style
+#{keys-to-selector($tabbar-styles, $tabbar-prefix)} {
+  @include tabbar-link-color(#dedede, $white);
+}

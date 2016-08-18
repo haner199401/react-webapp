@@ -1,0 +1,38 @@
+.wiki {
+  padding: 5px;
+
+  .searchInput {
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding: 0 5px;
+
+    input {
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      padding: 5px;
+      color: #909090;
+      background: #dcdcdc;
+    }
+  }
+
+
+  .autocompleteNodes{
+    margin-top: 40px;
+
+    .item {
+      margin:10px;
+
+      a {
+        color: #0e90d2;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      p{
+        font-size: 12px;
+      }
+    }
+  }
+}
