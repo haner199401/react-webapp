@@ -1,8 +1,8 @@
 /**
- * Created by haner on 16/8/17.
+ * Created by haner on 16/8/19.
  */
 
-import * as types from '../constants/ActionTypes';
+import * as types from './actionType';
 
 const initialState = {
     isFetching: false,

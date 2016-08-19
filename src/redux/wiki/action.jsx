@@ -3,7 +3,7 @@
  */
 
 import * as _ from 'lodash';
-import * as types from '../constants/ActionTypes';
+import * as types from './actionType';
 import request from 'superagent';
 import jsonp from 'superagent-jsonp';
 

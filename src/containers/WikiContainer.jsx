@@ -8,8 +8,7 @@ import Loader from '../components/Spinner/Loader';
 import AutoCompleteBox from '../components/Wiki/AutoCompleteBox';
 import { connect } from 'react-redux'
 
-
-import {fetchWikiData} from '../actions/wiki';
+import {wikiAction} from '../redux/wiki';
 
 import '../stylesheet/wiki.scss';
 
@@ -18,7 +17,7 @@ class WikiContainer extends Component {
     handleKeyUp(e) {
         e.stopPropagation();
         var k = e.target.value || '';
-        this.props.dispatch(fetchWikiData(k));
+        this.props.dispatch(wikiAction.fetchWikiData(k));
         return false;
     }
 
@@ -46,7 +45,7 @@ WikiContainer.propTypes = {
 };
 
 function stateMapPorp(state) {
-    return state.wiki;
+    return state.wikiReducer;
 }
 
 export default connect(stateMapPorp)(WikiContainer);
