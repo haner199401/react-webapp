@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link,IndexLink } from 'react-router';
 import '../stylesheet/index.scss';
 
 export default class App extends Component {
@@ -10,9 +10,9 @@ export default class App extends Component {
       </div>
 
       <nav className="tabbar tabbar-bonday">
-        <Link className="tabbar-item" to="/home" activeClassName="active">
+        <IndexLink className="tabbar-item" to="/" activeClassName="active">
           <span className="tabbar-label">主页</span>
-        </Link>
+        </IndexLink>
         <Link className="tabbar-item" to="/topic" activeClassName="active">
           <span className="tabbar-label">话题</span>
         </Link>
